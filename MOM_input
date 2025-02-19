@@ -25,9 +25,6 @@ AUTO_MASKTABLE = True           !   [Boolean] default = False
 ! This file was written by the model and records the non-default parameters used at run-time.
 
 ! === module MOM ===
-DIABATIC_FIRST = True           !   [Boolean] default = False
-                                ! If true, apply diabatic and thermodynamic processes, including buoyancy
-                                ! forcing and mass gain or loss, before stepping the dynamics forward.
 USE_REGRIDDING = True           !   [Boolean] default = False
                                 ! If True, use the ALE algorithm (regridding/remapping). If False, use the
                                 ! layered isopycnal algorithm.
@@ -378,8 +375,6 @@ USE_KH_IN_MEKE = True           !   [Boolean] default = False
                                 ! If true, uses the thickness diffusivity calculated here to diffuse MEKE.
 
 ! === module MOM_dynamics_split_RK2 ===
-TIDES = True                    !   [Boolean] default = False
-                                ! If true, apply tidal momentum forcing.
 VISC_REM_BUG = False            !   [Boolean] default = True
                                 ! If true, visc_rem_[uv] in split mode is incorrectly calculated or accounted
                                 ! for in two places. This parameter controls the defaults of two individual
@@ -403,13 +398,6 @@ BOUND_CORIOLIS = True           !   [Boolean] default = False
                                 ! (f+rv)v from the four neighboring v-points, and similarly at v-points.  This
                                 ! option would have no effect on the SADOURNY Coriolis scheme if it were
                                 ! possible to use centered difference thickness fluxes.
-
-! === module MOM_self_attr_load ===
-
-! === module MOM_tidal_forcing ===
-TIDE_M2 = True                  !   [Boolean] default = False
-                                ! If true, apply tidal momentum forcing at the M2 frequency. This is only used
-                                ! if TIDES is true.
 
 ! === module MOM_PressureForce ===
 
@@ -645,11 +633,6 @@ HBD_REMAPPING_USE_OM4_SUBCELLS = False !   [Boolean] default = True
 ! === module ocean_stochastics_init ===
 
 ! === module ocean_model_init ===
-RESTART_CONTROL = 3             ! default = 1
-                                ! An integer whose bits encode which restart files are written. Add 2 (bit 1)
-                                ! for a time-stamped file, and odd (bit 0) for a non-time-stamped file.  A
-                                ! restart file will be saved at the end of the run segment for any non-negative
-                                ! value.
 OCEAN_SURFACE_STAGGER = "A"     ! default = "C"
                                 ! A case-insensitive character string to indicate the staggering of the surface
                                 ! velocity field that is returned to the coupler.  Valid values include 'A',
